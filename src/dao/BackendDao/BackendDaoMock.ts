@@ -1,8 +1,8 @@
-import { Response } from "../Dao";
+import { Response, ValidResponse } from "../Dao";
 import { BackendDao, BackendResource } from "./BackendDao";
 
 export class BackendDaoMock implements BackendDao {
-  getResources(): Promise<Response<BackendResource[]>> {
+  getResources(): Promise<ValidResponse<BackendResource[]>> {
     return Promise.resolve({
       ok: this.getMockResources(),
       err: null,
