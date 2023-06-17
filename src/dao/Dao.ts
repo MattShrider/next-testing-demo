@@ -1,5 +1,3 @@
-import { defaultHead } from "next/head";
-
 export type ServerError = {
   response: unknown;
   statusCode: number;
