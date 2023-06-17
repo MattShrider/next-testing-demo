@@ -9,13 +9,16 @@ const createJestConfig = nextJest({ dir: "./" });
 // https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html#other-supported-patterns
 /** @type {import('jest').Config} Config */
 const customJestConfig = {
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+  setupFilesAfterEnv: ["<rootDir>/jest.browser.setup.js"],
   testEnvironment: "jest-environment-jsdom",
   // Note that tests in jsdom are opt-in, while tests in node are opt-out
   testMatch: [
-    "**/__tests__/jsdom/**/*.[jt]s?(x)",
-    "<rootDir>/components/**/*.[jt]s?(x)",
+    "**/__tests__/browser/**/*.[jt]s?(x)",
+    "<rootDir>/src/components/**/?(*.)+(spec|test).[jt]s?(x)",
   ],
+  globals: {
+    __MSW_ENV__: "browser",
+  },
 };
 
 // createJestConfig is exported in this way to ensure that next/jest can
